@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="profile-container">
+        <nav class="theme-nav navbar">
+            <div class="container-fluid">
+              <a class="navbar-brand" (click)="goToMainMenu()"><i class="fa fa-angle-left"></i> Back to Main Menu</a>
+            </div>
+        </nav>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="row">
+                <div class="col-sm-6">
+                  <img [src]="currentProfile.Image" width="100%" height="100%"/>
+                </div>
+                <div class="col-sm-6">
+                  <div class="profile-detail">
+                    <div><span class="profile-label">Code: </span><span>{{currentProfile.Code}}</span></div>
+                    <div><span class="profile-label">Name: </span><span>{{currentProfile.FirstName}} {{currentProfile.LastName}}</span></div>
+                    <div><span class="profile-label">Age: </span><span></span>{{currentProfile.Age}}</div>
+                    <div><span class="profile-label">City: </span><span>{{currentProfile.City}}</span></div>
+                    <div><span class="profile-label">State: </span><span>{{currentProfile.State}}</span></div>
+                    <div><span class="profile-label">Qualification: </span><span>{{currentProfile.Qualification}}</span></div>
+                    <div><span class="profile-label">Religion: </span><span>{{currentProfile.Religion}}</span></div>
+                    <div><span class="profile-label">Category: </span><span>{{currentProfile.Category}}</span></div>
+                    <div><span class="profile-label">About: </span><span>{{currentProfile.About}}</span></div>
+
+                    <div class="row" *ngIf="currentProfile?.Action == 0">
+                      <div class="col-3"><button class="theme-button" type="button" (click)="profileAction(currentProfile, 10)"><i class="fa fa-check"></i>	Yes</button></div>
+                      <div class="col-3"><button class="theme-button" type="button" (click)="profileAction(currentProfile, 20)"><i class="fa fa-close"></i>	No</button></div>
+                      <div class="col-3"><button class="theme-button" type="button" (click)="profileAction(currentProfile, 30)"><i class="fa fa-star"></i> Shortlist</button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>

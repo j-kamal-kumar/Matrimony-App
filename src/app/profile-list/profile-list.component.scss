@@ -1,0 +1,57 @@
+.demo-tab-group {
+    border: 1px solid #e8e8e8;
+  }
+  
+  .demo-tab-content {
+    padding: 16px;
+  }
+  
+  .mat-tab-label-active{
+    background-color: #2C5F2D;
+    color:#fff;
+    opacity: 1 !important;
+  }
+  
+  .borderline {
+    border:#161414 1px solid;
+  }
+  
+  .profile-content {
+    display:flex;
+    padding:16px;
+    div {
+        margin-left:15px;
+    }
+  }
+
+  .profile-content {
+    div {
+        padding:8px
+    }
+    .label {
+        color:rgb(137, 137, 243);
+    }
+  }
+
+  swiper {
+    height: 100%;
+    width: 100%;
+  }
+
+  .profile-detail {
+    padding: 20px;
+    div {
+      padding: 10px;
+    }
+  }
+
+  .profile-label {
+    color:#2C5F2D;
+    font-weight: bold;
+  }
+ 
+
+  .swiper-button-prev, .swiper-button-next {
+    color:#2C5F2D;
+    top:30% !important;
+  }
