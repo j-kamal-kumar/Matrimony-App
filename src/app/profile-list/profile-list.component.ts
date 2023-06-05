@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppService } from '../app.service';
 import Swiper, { SwiperOptions } from 'swiper';
 import { Router } from '@angular/router';
+import { Subject} from 'rxjs';
 
 @Component({
   selector: 'app-profile-list',
@@ -10,11 +11,13 @@ import { Router } from '@angular/router';
   encapsulation : ViewEncapsulation.None
 })
 export class ProfileListComponent implements OnInit {
+  parentSubject:Subject<string> = new Subject();
   groomProfiles: any = [];
   pendingProfiles:any = [];
   interestedProfiles:any = [];
   rejectedProfiles:any = [];
   shortListedProfiles:any = [];
+  dailyRecommendations:any = [];
   pendingCounts = 0;
   interestedCounts = 0;
   rejectedCounts = 0;
@@ -51,6 +54,7 @@ export class ProfileListComponent implements OnInit {
     this.rejectedCounts = rejected.length;
     this.shortListedCounts = shortlist.length;
     this.pendingProfiles = pending;
+    console.log('this.pendingProfiles',this.pendingProfiles);
     this.interestedProfiles = interested;
     this.rejectedProfiles = rejected;
     this.shortListedProfiles = shortlist;
@@ -59,6 +63,17 @@ export class ProfileListComponent implements OnInit {
   viewProfile(val: any) {
     this.appservice.selectProfile(val);
     this.router.navigate(['/viewprofile']);
+  }
+
+  
+  cardAnimation(value:any) {
+    this.parentSubject.next(value);
+  }
+
+  addItem(event:any) {
+    this.appservice.updateProfileList(event);
+    console.log('event',event);
+    this.ngOnInit();
   }
 
 }

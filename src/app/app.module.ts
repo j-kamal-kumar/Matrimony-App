@@ -9,12 +9,14 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { ProfileListComponent } from './profile-list/profile-list.component';
 import { ToastrModule } from 'ngx-toastr';
+import { DailyRecommendationComponent } from './profile-list/daily-recommendation/daily-recommendation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewProfileComponent,
-    ProfileListComponent
+    ProfileListComponent,
+    DailyRecommendationComponent
   ],
   imports: [
     BrowserModule,
@@ -23,12 +25,9 @@ import { ToastrModule } from 'ngx-toastr';
     NgbModule,
     MatTabsModule,
     NgxUsefulSwiperModule,
-    ToastrModule.forRoot({
-      timeOut: 5000
-    }),
+    ToastrModule.forRoot()
   ],
   exports: [
-    BrowserModule,
     AppRoutingModule,
     MatTabsModule
   ],

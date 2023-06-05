@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ViewProfileComponent implements OnInit {
   currentProfile:any = {};
-  constructor(private router: Router, private appservice: AppService, private toastrService: ToastrService) { }
+  constructor(private router: Router, private appservice: AppService, public toastrService: ToastrService) { }
 
   ngOnInit(): void {
     this.currentProfile = this.appservice.selectedProfile;

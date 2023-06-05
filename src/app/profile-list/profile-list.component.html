@@ -1,124 +1,156 @@
 <div class="container">
-    <div class="profile-container">
-      <mat-tab-group>
-        <mat-tab label="Pending({{pendingCounts}})">
-          <swiper [config]="config" id="pending">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide" *ngFor="let pprofile of pendingProfiles">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <img [src]="pprofile.Image" width="100%" height="100%" (click)="viewProfile(pprofile)"/>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="profile-detail">
-                      <div><span class="profile-label">Name: </span><span>{{pprofile?.FirstName}} {{pprofile.LastName}}</span></div>
-                      <div><span class="profile-label">Age: </span><span></span>{{pprofile?.Age}}</div>
-                      <div><span class="profile-label">City: </span><span>{{pprofile?.City}}</span></div>
-                      <div><span class="profile-label">State: </span><span>{{pprofile?.State}}</span></div>
-                      <div><span class="profile-label">About: </span><span>{{pprofile?.About}}</span></div>
-                      <div>
-                        <button class="theme-button" type="button" (click)="viewProfile(pprofile)"><i class="fa fa-eye"></i> View Profile</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-          </swiper>
-        </mat-tab>
-        <mat-tab label="Interested({{interestedCounts}})">
-          <div *ngIf="interestedProfiles.length > 0">
-            <div *ngFor="let iprofile of interestedProfiles">
-              <div class="row" style="padding:10px;">
+  <div class="profile-container">
+    <mat-tab-group>
+      <mat-tab label="Pending({{pendingCounts}})">
+        <swiper [config]="config" id="pending" >
+          <div class="swiper-wrapper" *ngIf="pendingProfiles.length > 0">
+            <div class="swiper-slide" *ngFor="let pprofile of pendingProfiles">
+              <div class="row">
                 <div class="col-sm-6">
-                  <img [src]="iprofile.Image" width="100%" height="100%" (click)="viewProfile(iprofile)"/>
+                  <img [src]="pprofile.Image" width="100%" height="100%" (click)="viewProfile(pprofile)"/>
                 </div>
                 <div class="col-sm-6">
                   <div class="profile-detail">
-                    <div><span class="profile-label">Name: </span><span>{{iprofile?.FirstName}} {{iprofile?.LastName}}</span></div>
-                    <div><span class="profile-label">Age: </span><span></span>{{iprofile?.Age}}</div>
-                    <div><span class="profile-label">City: </span><span>{{iprofile?.City}}</span></div>
-                    <div><span class="profile-label">State: </span><span>{{iprofile?.State}}</span></div>
-                    <div><span class="profile-label">About: </span><span>{{iprofile?.About}}</span></div>
+                    <div><span class="profile-label">Name: </span><span>{{pprofile?.FirstName}} {{pprofile.LastName}}</span></div>
+                    <div><span class="profile-label">Age: </span><span></span>{{pprofile?.Age}}</div>
+                    <div><span class="profile-label">City: </span><span>{{pprofile?.City}}</span></div>
+                    <div><span class="profile-label">State: </span><span>{{pprofile?.State}}</span></div>
+                    <div><span class="profile-label">About: </span><span>{{pprofile?.About}}</span></div>
                     <div>
-                      <button class="theme-button" type="button" (click)="viewProfile(iprofile)"><i class="fa fa-eye"></i> View Profile</button>
+                      <button class="theme-button" type="button" (click)="viewProfile(pprofile)"><i class="fa fa-eye"></i> View Profile</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div *ngIf="interestedProfiles.length == 0">
+          <div class="swiper-button-next" *ngIf="pendingProfiles.length > 0"></div>
+          <div class="swiper-button-prev" *ngIf="pendingProfiles.length > 0"></div>
+          <div *ngIf="pendingProfiles.length == 0">
             <div class="row" style="padding:10px;">
               <div class="col-sm-12">
                 No Records found
               </div>
             </div>
           </div>
-        </mat-tab>
-        <mat-tab label="Rejected({{rejectedCounts}})">
-          <div *ngIf="rejectedProfiles.length > 0">
-            <div *ngFor="let rprofile of rejectedProfiles">
-              <div class="row" style="padding:10px;">
-                <div class="col-sm-6">
-                  <img [src]="rprofile.Image" width="100%" height="100%" (click)="viewProfile(rprofile)"/>
-                </div>
-                <div class="col-sm-6">
-                  <div class="profile-detail">
-                    <div><span class="profile-label">Name: </span><span>{{rprofile?.FirstName}} {{rprofile?.LastName}}</span></div>
-                    <div><span class="profile-label">Age: </span><span></span>{{rprofile?.Age}}</div>
-                    <div><span class="profile-label">City: </span><span>{{rprofile?.City}}</span></div>
-                    <div><span class="profile-label">State: </span><span>{{rprofile?.State}}</span></div>
-                    <div><span class="profile-label">About: </span><span>{{rprofile?.About}}</span></div>
-                    <div>
-                      <button class="theme-button" type="button" (click)="viewProfile(rprofile)"><i class="fa fa-eye"></i> View Profile</button>
-                    </div>
+        </swiper>
+      </mat-tab>
+      <mat-tab label="Interested({{interestedCounts}})">
+        <div *ngIf="interestedProfiles.length > 0">
+          <div *ngFor="let iprofile of interestedProfiles">
+            <div class="row" style="padding:10px;">
+              <div class="col-sm-6">
+                <img [src]="iprofile.Image" width="100%" height="100%" (click)="viewProfile(iprofile)"/>
+              </div>
+              <div class="col-sm-6">
+                <div class="profile-detail">
+                  <div><span class="profile-label">Name: </span><span>{{iprofile?.FirstName}} {{iprofile?.LastName}}</span></div>
+                  <div><span class="profile-label">Age: </span><span></span>{{iprofile?.Age}}</div>
+                  <div><span class="profile-label">City: </span><span>{{iprofile?.City}}</span></div>
+                  <div><span class="profile-label">State: </span><span>{{iprofile?.State}}</span></div>
+                  <div><span class="profile-label">About: </span><span>{{iprofile?.About}}</span></div>
+                  <div>
+                    <button class="theme-button" type="button" (click)="viewProfile(iprofile)"><i class="fa fa-eye"></i> View Profile</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div *ngIf="rejectedProfiles.length == 0">
-            <div class="row" style="padding:10px;">
-              <div class="col-sm-12">
-                No Records found
-              </div>
+        </div>
+        <div *ngIf="interestedProfiles.length == 0">
+          <div class="row" style="padding:10px;">
+            <div class="col-sm-12">
+              No Records found
             </div>
           </div>
-        </mat-tab>
-        <mat-tab label="Shortlisted({{shortListedCounts}})">
-          <div *ngIf="shortListedProfiles.length > 0">
-            <div *ngFor="let sprofile of shortListedProfiles">
-              <div class="row" style="padding:10px;">
-                <div class="col-sm-6">
-                  <img [src]="sprofile.Image" width="100%" height="100%" (click)="viewProfile(sprofile)"/>
-                </div>
-                <div class="col-sm-6">
-                  <div class="profile-detail">
-                    <div><span class="profile-label">Name: </span><span>{{sprofile?.FirstName}} {{sprofile?.LastName}}</span></div>
-                    <div><span class="profile-label">Age: </span><span></span>{{sprofile?.Age}}</div>
-                    <div><span class="profile-label">City: </span><span>{{sprofile?.City}}</span></div>
-                    <div><span class="profile-label">State: </span><span>{{sprofile?.State}}</span></div>
-                    <div><span class="profile-label">About: </span><span>{{sprofile?.About}}</span></div>
-                    <div>
-                      <button class="theme-button" type="button" (click)="viewProfile(sprofile)"><i class="fa fa-eye"></i> View Profile</button>
-                    </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Rejected({{rejectedCounts}})">
+        <div *ngIf="rejectedProfiles.length > 0">
+          <div *ngFor="let rprofile of rejectedProfiles">
+            <div class="row" style="padding:10px;">
+              <div class="col-sm-6">
+                <img [src]="rprofile.Image" width="100%" height="100%" (click)="viewProfile(rprofile)"/>
+              </div>
+              <div class="col-sm-6">
+                <div class="profile-detail">
+                  <div><span class="profile-label">Name: </span><span>{{rprofile?.FirstName}} {{rprofile?.LastName}}</span></div>
+                  <div><span class="profile-label">Age: </span><span></span>{{rprofile?.Age}}</div>
+                  <div><span class="profile-label">City: </span><span>{{rprofile?.City}}</span></div>
+                  <div><span class="profile-label">State: </span><span>{{rprofile?.State}}</span></div>
+                  <div><span class="profile-label">About: </span><span>{{rprofile?.About}}</span></div>
+                  <div>
+                    <button class="theme-button" type="button" (click)="viewProfile(rprofile)"><i class="fa fa-eye"></i> View Profile</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div *ngIf="shortListedProfiles.length == 0">
+        </div>
+        <div *ngIf="rejectedProfiles.length == 0">
+          <div class="row" style="padding:10px;">
+            <div class="col-sm-12">
+              No Records found
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Shortlisted({{shortListedCounts}})">
+        <div *ngIf="shortListedProfiles.length > 0">
+          <div *ngFor="let sprofile of shortListedProfiles">
             <div class="row" style="padding:10px;">
-              <div class="col-sm-12">
-                No Records found
+              <div class="col-sm-6">
+                <img [src]="sprofile.Image" width="100%" height="100%" (click)="viewProfile(sprofile)"/>
+              </div>
+              <div class="col-sm-6">
+                <div class="profile-detail">
+                  <div><span class="profile-label">Name: </span><span>{{sprofile?.FirstName}} {{sprofile?.LastName}}</span></div>
+                  <div><span class="profile-label">Age: </span><span></span>{{sprofile?.Age}}</div>
+                  <div><span class="profile-label">City: </span><span>{{sprofile?.City}}</span></div>
+                  <div><span class="profile-label">State: </span><span>{{sprofile?.State}}</span></div>
+                  <div><span class="profile-label">About: </span><span>{{sprofile?.About}}</span></div>
+                  <div>
+                    <button class="theme-button" type="button" (click)="viewProfile(sprofile)"><i class="fa fa-eye"></i> View Profile</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
+        </div>
+        <div *ngIf="shortListedProfiles.length == 0">
+          <div class="row" style="padding:10px;">
+            <div class="col-sm-12">
+              No Records found
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Daily Recommendations">
+        <div class="tbg">
+          <div class="tbgwrap">
+            <div class="row">
+             <div class="col-12">
+                <div class="photo-content">
+                  <app-daily-recommendation  (newItemEvent)="addItem($event)" [parentSubject]="parentSubject">
+                  </app-daily-recommendation>
+                </div>
+                <div class="detail-content" *ngIf="pendingProfiles.length > 0">
+                  <div><button class="theme-button-card" type="button" (click)='cardAnimation("swipeleft")'><i class="fa fa-check"></i>	Yes</button></div>
+                  <div><button class="theme-button-card" type="button" (click)='cardAnimation("swiperight")'><i class="fa fa-close"></i> No</button></div>
+                  <div><button class="theme-button-card" type="button" (click)='cardAnimation("swipeleft")'><i class="fa fa-star"></i>	Shortlist</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="pendingProfiles.length == 0">
+          <div class="row" style="padding:10px;">
+            <div class="col-sm-12">
+              No Records found
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </div>
+</div>
